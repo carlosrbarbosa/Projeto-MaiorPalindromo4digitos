@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontrando o Maior Palíndromo</title>
+</head>
+<body>
+    <h1>O Maior Palíndromo Resultante do Produto de Dois Números com 4 Dígitos é:</h1>
+    <!-- O resultado será exibido aqui -->
+    <p id="resultado"></p>
+
+    <script>
+        function ehPalindromo(num) {
+            return num.toString() === num.toString().split('').reverse().join('');
+        }
+
+        function encontrarMaiorPalindromo() {
+            let maiorPalindromo = 0;
+            for (let i = 1000; i < 10000; i++) {
+                for (let j = 1000; j < 10000; j++) {
+                    const produto = i * j;
+                    if (ehPalindromo(produto) && produto > maiorPalindromo) {
+                        maiorPalindromo = produto;
+                    }
+                }
+            }
+            return maiorPalindromo;
+        }
+
+        // Encontra o maior palíndromo
+        const maiorPalindromo = encontrarMaiorPalindromo();
+
+        // Exibe o resultado na página
+        const resultadoElemento = document.getElementById("resultado");
+        resultadoElemento.textContent = maiorPalindromo;
+    </script>
+</body>
+</html>
